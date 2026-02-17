@@ -1,0 +1,15 @@
+{
+  "$schema":"https://opencode.ai/config.json",
+  "plugin":["opencode-gemini-auth@latest"],
+  "mcp":{
+    "docker-mcp": {
+      "type": "local",
+      "command": [ "docker", "mcp", "gateway", "run" ],
+      "enabled":true
+    },
+    "notion-mcp": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp"
+    }
+  }
+}

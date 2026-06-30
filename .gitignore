@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Machine-local runtime — opencode installs plugins here; regenerate with
+# `bun install`. Kept local (not committed) per existing convention.
+node_modules
+package.json
+bun.lock
+package-lock.json

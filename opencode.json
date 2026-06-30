@@ -1,15 +1,52 @@
 {
-  "$schema":"https://opencode.ai/config.json",
-  "plugin":["opencode-gemini-auth@latest"],
-  "mcp":{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["./prompts/global-tone-relaxed-depressed.md"],
+  "provider": {
+    "openai": {
+      "models": {
+        "gpt-5.4": {
+          "options": {
+            "reasoningEffort": "high",
+            "serviceTier": "priority"
+          }
+        },
+        "gpt-5.4-fast": {
+          "options": {
+            "reasoningEffort": "high",
+            "serviceTier": "priority"
+          }
+        }
+      }
+    }
+  },
+  "agent": {
+    "build": {
+      "mode": "primary",
+      "prompt": "{file:./prompts/build-relaxed-depressed.md}"
+    },
+    "plan": {
+      "mode": "primary",
+      "prompt": "{file:./prompts/plan-relaxed-depressed.md}"
+    }
+  },
+  "mcp": {
     "docker-mcp": {
       "type": "local",
-      "command": [ "docker", "mcp", "gateway", "run" ],
-      "enabled":true
+      "command": ["docker", "mcp", "gateway", "run"],
+      "enabled": true
     },
     "notion-mcp": {
       "type": "remote",
       "url": "https://mcp.notion.com/mcp"
+    },
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp"
+    },
+    "grafana": {
+      "type": "local",
+      "command": ["/tmp/grafana-mcp-wrapper.sh"],
+      "enabled": true
     }
   }
 }
